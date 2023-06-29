@@ -38,7 +38,7 @@ export default async function Properties({ searchParams }: any) {
       <div className="flex flex-wrap items-start justify-start max-sm:flex-col w-full max-sm:p-0">
         {Properties &&
           Properties.map((property: any) => {
-            return <PropertyCard property={property} />;
+            return <PropertyCard property={property} key={property.sys.id}/>;
           })}
       </div>
     </main>

@@ -24,7 +24,7 @@ export default async function Lands({searchParams }: any) {
       <div className="flex flex-wrap items-start justify-start max-sm:flex-col w-full max-sm:p-0">
         {Lands &&
           Lands.map((land: any) => {
-            return <LandCard land={land} />;
+            return <LandCard land={land} key={land.sys.id} />;
           })}
       </div>
     </main>

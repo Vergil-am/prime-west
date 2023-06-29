@@ -11,9 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
-import Link from "next/link";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -70,7 +68,7 @@ export default function PropertyForm({ PropertyTitle, PropertyId }: params) {
     }
 
     toast({
-      title: `${PropertyTitle}`,
+      title: PropertyTitle,
       description: "Your application has been sent and it is now being processed",
     });
   }

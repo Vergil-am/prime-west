@@ -13,12 +13,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { useAuth } from "@clerk/nextjs";
+import { SignInButton, useAuth } from "@clerk/nextjs";
 import axios from "axios";
-import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
-import { FileStack } from "lucide-react";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Button } from "../ui/button";
 
 export default function Applications() {
   const { isLoaded } = useAuth();
@@ -36,9 +36,9 @@ export default function Applications() {
     <>
       <Sheet>
         <SheetTrigger>
-          <Button variant="ghost" className="mr-2">
-            <FileStack color="#fffafa" className="w-full hover:stroke-black" />
-          </Button>
+          <p className="block lg:inline-block text-md font-bold  text-secondary sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg">
+            My Applications
+          </p>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -59,7 +59,7 @@ export default function Applications() {
                 </div>
               </SignedIn>
               <SignedOut>
-                <RedirectToSignIn />
+                <SignInButton />
               </SignedOut>
             </Accordion>
           </SheetHeader>
