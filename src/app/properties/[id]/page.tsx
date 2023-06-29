@@ -1,6 +1,7 @@
 import Carousel from "@/components/propertyPage/Carousel";
 import Description from "@/components/propertyPage/description";
 import PropertyForm from "@/components/propertyPage/form";
+import MapsView from "@/components/propertyPage/mapsView";
 import {
   Card,
   CardHeader,
@@ -10,6 +11,7 @@ import {
   CardContent,
 } from "@/components/ui/Card";
 import { BedSingle, Bath, Warehouse, Home } from "lucide-react";
+
 const contentful = require("contentful");
 const client = contentful.createClient({
   space: "izmdfhi52bl5",
@@ -22,6 +24,7 @@ export default async function Property({ params }: any) {
   if (Property == undefined) {
     throw new Error("failed to retrieve Property");
   }
+
   return (
     <main>
       <div className="w-screen flex flex-wrap">
@@ -58,7 +61,10 @@ export default async function Property({ params }: any) {
           </Card>
         </div>
         <div className="w-3/5 m-3 max-lg:w-full">
-          <Description Body={Property.description}/>
+          <Description Body={Property.description} />
+          <div>
+            <MapsView Coordinates={Property.location}/>
+          </div>
         </div>
       </div>
     </main>

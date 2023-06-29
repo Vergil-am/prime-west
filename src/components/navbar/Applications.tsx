@@ -18,14 +18,13 @@ import { useEffect, useState } from "react";
 import { SignInButton, useAuth } from "@clerk/nextjs";
 import axios from "axios";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { Button } from "../ui/button";
 
 export default function Applications() {
   const { isLoaded } = useAuth();
   const [data, setData] = useState<any>(null);
   useEffect(() => {
     const getdata = async () => {
-      const res = await axios.get("http://localhost:3000/api/applications/user");
+      const res = await axios.get("/api/applications/user");
       setData(res.data);
     };
     if (isLoaded) {

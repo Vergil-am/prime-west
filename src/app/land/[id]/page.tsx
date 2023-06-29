@@ -9,6 +9,7 @@ import {
   CardContent,
 } from "@/components/ui/Card";
 import { BedSingle, Bath, MapPin, Map } from "lucide-react";
+import MapsView from "@/components/propertyPage/mapsView";
 import Description from "@/components/propertyPage/description";
 const contentful = require("contentful");
 const client = contentful.createClient({
@@ -61,6 +62,9 @@ export default async function Land({ params }: any) {
         </div>
         <div className="w-3/5 m-3 max-lg:w-full">
           <Description Body={land.description} />
+          <div>
+            <MapsView Coordinates={land.location} />
+          </div>
         </div>
       </div>
     </main>
