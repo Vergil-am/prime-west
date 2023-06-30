@@ -12,8 +12,10 @@ export default async function Properties({ searchParams }: any) {
   });
   let Properties = res.items;
   if (searchParams.search) {
-    Properties = Properties.filter((property: any) =>
-      property.fields.title.toLowerCase().includes(searchParams.search.toLowerCase())
+    Properties = Properties.filter(
+      (property: any) =>
+        property.fields.title.toLowerCase().includes(searchParams.search.toLowerCase()) ||
+        property.fields.address.toLowerCase().includes(searchParams.search.toLowerCase())
     );
   }
   if (searchParams.bedrooms) {
@@ -37,7 +39,7 @@ export default async function Properties({ searchParams }: any) {
       <div className="flex flex-wrap items-start justify-start max-sm:flex-col w-full max-sm:p-0">
         {Properties &&
           Properties.map((property: any) => {
-            return <PropertyCard property={property} key={property.sys.id}/>;
+            return <PropertyCard property={property} key={property.sys.id} />;
           })}
       </div>
     </main>

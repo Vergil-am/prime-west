@@ -21,9 +21,7 @@ export default function Home() {
   const [Garages, setGarages] = useState<string | null>(null);
 
   const router = useRouter();
-  // I still need more work here
   const addSearchParams = (Arg: string) => {
-    // I need to add more params
     const params = new URLSearchParams(window.location.search);
     if (Search) {
       params.set("search", Search);
@@ -63,7 +61,7 @@ bg-[url('https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-esta
                   <Label htmlFor="search">Search</Label>
                   <Input
                     id="search"
-                    placeholder="Search..."
+                    placeholder="e.g. Town/Postecode/Title..."
                     onChange={(e) => setSearch(e.target.value)}
                   />
                 </div>
@@ -75,6 +73,7 @@ bg-[url('https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-esta
                       type="number"
                       min={1}
                       onChange={(e) => setBedrooms(e.target.value)}
+                      placeholder="any"
                     />
                   </div>
                   <div className="space-y-1 m-1">
@@ -84,6 +83,7 @@ bg-[url('https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-esta
                       type="number"
                       min={1}
                       onChange={(e) => setBathrooms(e.target.value)}
+                      placeholder="any"
                     />
                   </div>
                   <div className="space-y-1 m-1">
@@ -93,6 +93,7 @@ bg-[url('https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-esta
                       type="number"
                       min={1}
                       onChange={(e) => setGarages(e.target.value)}
+                      placeholder="any"
                     />
                   </div>
                 </div>
@@ -113,7 +114,7 @@ bg-[url('https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-esta
                   <Label htmlFor="search">Search</Label>
                   <Input
                     id="search"
-                    placeholder="Search..."
+                    placeholder="e.g. Town/Postecode/Title..."
                     onChange={(e) => setSearch(e.target.value)}
                   />
                 </div>
