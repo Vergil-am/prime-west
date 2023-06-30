@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import { SignInButton, useAuth } from "@clerk/nextjs";
 import axios from "axios";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { ClipboardList } from "lucide-react";
 
 export default function Applications() {
   const { isLoaded } = useAuth();
@@ -35,9 +36,7 @@ export default function Applications() {
     <>
       <Sheet>
         <SheetTrigger>
-          <p className="block lg:inline-block text-md font-bold  text-secondary sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg">
-            My Applications
-          </p>
+          <ClipboardList size={32} color="#f5f0f0" className="mx-2" />
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>

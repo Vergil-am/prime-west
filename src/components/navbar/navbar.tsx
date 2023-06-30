@@ -1,37 +1,16 @@
-"use client";
 import Link from "next/link";
-import { useState } from "react";
 import Clerk from "@/components/navbar/clerk";
 import Applications from "@/components/navbar/Applications";
+import { PhoneMenu } from "./PhoneMenu";
 
 export default function NavBar() {
-  const [Open, setOpen] = useState("hidden");
-  const OpenNavBar = () => {
-    if (Open == "hidden") {
-      setOpen("block");
-    } else if (Open == "block") {
-      setOpen("hidden");
-    }
-  };
   return (
     <header>
-      <div className="bg-primary w-screen py-4 px-2 lg:mx-4 xl:mx-0 fixed z-50 top-0">
+      <div className="bg-primary w-screen py-4 px-2  xl:mx-0 fixed z-50 top-0">
         <div className="flex justify-between">
-          <nav className="flex items-center justify-between flex-wrap  ">
+          <nav className="flex items-center justify-between flex-wrap">
             <div className="block lg:hidden">
-              <button
-                className="navbar-burger flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white"
-                onClick={OpenNavBar}
-              >
-                <svg
-                  className="fill-current h-6 w-6 text-gray-700"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Menu</title>
-                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                </svg>
-              </button>
+              <PhoneMenu />
             </div>
             <Link
               href="/"
@@ -41,7 +20,7 @@ export default function NavBar() {
               <br />
               <small className="text-sm font-medium leading-none">Property group</small>
             </Link>
-            <div className={`w-full flex-grow lg:flex items-center lg:w-auto block ${Open}`}>
+            <div className={`w-full flex-grow lg:flex items-center lg:w-auto hidden`}>
               <div className="text-sm lg:flex-grow mt-2 animated jackinthebox xl:mx-8">
                 <Link
                   href="/properties"

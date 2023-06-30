@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardFooter,
   CardTitle,
-  CardDescription,
   CardContent,
 } from "@/components/ui/Card";
 import { BedSingle, Bath, Warehouse, Home } from "lucide-react";
@@ -36,7 +35,6 @@ export default async function Property({ params }: any) {
             <CardHeader className="flex items-center">
               <CardTitle>{Property.title}</CardTitle>
             </CardHeader>
-            <CardDescription>test</CardDescription>
             <CardContent className="flex items-center flex-col">
               <ul>
                 <li className="flex m-2">
@@ -63,7 +61,10 @@ export default async function Property({ params }: any) {
         <div className="w-3/5 m-3 max-lg:w-full">
           <Description Body={Property.description} />
           <div>
-            <MapsView Coordinates={Property.location}/>
+            <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+              Location of the property
+            </h2>
+            <MapsView Coordinates={Property.location} />
           </div>
         </div>
       </div>

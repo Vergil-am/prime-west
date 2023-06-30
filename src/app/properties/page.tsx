@@ -7,7 +7,6 @@ const client = contentful.createClient({
   accessToken: "nfCtAYqyYRABC5oWQmwI-luORkf1oePPL2l5ZcCdOqA",
 });
 export default async function Properties({ searchParams }: any) {
-  console.log(searchParams);
   const res = await client.getEntries({
     content_type: "properties",
   });

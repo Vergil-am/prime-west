@@ -5,10 +5,9 @@ import {
   CardHeader,
   CardFooter,
   CardTitle,
-  CardDescription,
   CardContent,
 } from "@/components/ui/Card";
-import { BedSingle, Bath, MapPin, Map } from "lucide-react";
+import { Map } from "lucide-react";
 import MapsView from "@/components/propertyPage/mapsView";
 import Description from "@/components/propertyPage/description";
 const contentful = require("contentful");
@@ -36,19 +35,8 @@ export default async function Land({ params }: any) {
             <CardHeader className="flex items-center">
               <CardTitle>{land.title}</CardTitle>
             </CardHeader>
-            <CardDescription>test</CardDescription>
             <CardContent className="flex items-center flex-col">
               <ul>
-                <li className="flex m-2">
-                  <BedSingle color="#000000" className="mr-2" /> Bedrooms : 2
-                </li>
-
-                <li className="flex m-2">
-                  <Bath color="#000000" className="mr-2" /> Bathrooms : 4
-                </li>
-                <li className="flex m-2">
-                  <MapPin className="mr-2" /> Location: test
-                </li>
                 <li className="flex m-2">
                   <Map className="mr-2" /> Size : {land.size} m2
                 </li>
@@ -63,6 +51,9 @@ export default async function Land({ params }: any) {
         <div className="w-3/5 m-3 max-lg:w-full">
           <Description Body={land.description} />
           <div>
+            <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+              Location of the land
+            </h2>
             <MapsView Coordinates={land.location} />
           </div>
         </div>

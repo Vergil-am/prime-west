@@ -1,4 +1,4 @@
-import { BLOCKS} from "@contentful/rich-text-types";
+import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 const options = {
   renderNode: {
@@ -21,7 +21,7 @@ const options = {
     ),
     [BLOCKS.OL_LIST]: (node: any, children: any) => {
       return (
-        <ol className="my-6 ml-6 list-disc [&>li]:mt-2">
+        <ol className="my-6 ml-6 list-decimal [&>li]:mt-2">
           {children.map((item: any) => (
             <li key={item.key}>{item.props.children[0].props.children[0]}</li>
           ))}
@@ -40,6 +40,5 @@ const options = {
   },
 };
 export default function Description({ Body }: any) {
-  console.log(Body);
   return documentToReactComponents(Body, options);
 }

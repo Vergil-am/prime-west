@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/Card";
+import { Card, CardHeader, CardFooter, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Separator } from "@/components/ui/Separator";
 import Link from "next/link";
 import axios from "axios";
