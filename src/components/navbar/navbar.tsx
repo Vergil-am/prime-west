@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Clerk from "@/components/navbar/clerk";
-import Applications from "@/components/navbar/Applications";
 import { PhoneMenu } from "./PhoneMenu";
 import ProfileMenu from "./profileMenu";
 

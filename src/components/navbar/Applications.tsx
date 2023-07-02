@@ -13,12 +13,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-// import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { SignInButton, useAuth } from "@clerk/nextjs";
 import axios from "axios";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { ClipboardList, Heart } from "lucide-react";
+import { ClipboardList } from "lucide-react";
 
 export default function Applications() {
   const { isLoaded } = useAuth();
@@ -36,7 +35,7 @@ export default function Applications() {
     <>
       <Sheet>
         <SheetTrigger className="flex ">
-          <Heart className="mr-2 h-4 w-4" />
+          <ClipboardList className="mr-2 h-4 w-4" />
           <span>My Applications</span>
         </SheetTrigger>
         <SheetContent>
