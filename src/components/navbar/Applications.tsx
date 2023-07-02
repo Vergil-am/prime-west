@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import { SignInButton, useAuth } from "@clerk/nextjs";
 import axios from "axios";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { ClipboardList } from "lucide-react";
+import { ClipboardList, Heart } from "lucide-react";
 
 export default function Applications() {
   const { isLoaded } = useAuth();
@@ -35,8 +35,9 @@ export default function Applications() {
   return (
     <>
       <Sheet>
-        <SheetTrigger>
-          <ClipboardList size={32} color="#f5f0f0" className="mx-2" />
+        <SheetTrigger className="flex ">
+          <Heart className="mr-2 h-4 w-4" />
+          <span>My Applications</span>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>

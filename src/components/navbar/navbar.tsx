@@ -2,6 +2,7 @@ import Link from "next/link";
 import Clerk from "@/components/navbar/clerk";
 import Applications from "@/components/navbar/Applications";
 import { PhoneMenu } from "./PhoneMenu";
+import ProfileMenu from "./profileMenu";
 
 export default function NavBar() {
   return (
@@ -62,8 +63,7 @@ export default function NavBar() {
             </div>
           </nav>
           <div className="flex items-center mr-5">
-            <Applications />
-            <Clerk />
+            <ProfileMenu />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Menu, LucideUser, LifeBuoy, Heart, LogOut, UserPlus, User } from "lucide-react";
+import { Menu, LucideUser, LogOut, UserPlus, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,20 +12,10 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/menu";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
-import { SignOutButton } from "@clerk/nextjs";
-
+import { SignInButton, SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import Applications from "./Applications";
 
 export default function ProfileMenu() {
-  const [isLoggedin, setLoggedin] = useState(false);
-  // const session = useSession();
-  // useEffect(() => {
-  //   if (session.status === "authenticated") {
-  //     setLoggedin(true);
-  //   }
-  // }, [session]);
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -37,62 +27,46 @@ export default function ProfileMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        {isLoggedin ? (
-          <>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Link className="flex" href="/profile">
-                  <LucideUser className="mr-2 h-4 w-4" />
-                  <span>Profile</span>
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link className="flex" href="/wishlist">
-                  <Heart className="mr-2 h-4 w-4" />
-                  <span>Whishlist</span>
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </>
-        ) : (
-          <>
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Link className="flex" href="/api/auth/signin">
-                  <LucideUser className="mr-2 h-4 w-4" />
-                  <span>Login</span>
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link className="flex" href="/register">
-                  <UserPlus className="mr-2 h-4 w-4" />
-                  <span>Sign up</span>
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </>
-        )}
-        <DropdownMenuItem>
-          <Link className="flex" href="/help">
-            <LifeBuoy className="mr-2 h-4 w-4" />
-            <span>Help</span>
-          </Link>
-        </DropdownMenuItem>
-        {isLoggedin && (
-          <>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-            // onClick={() => signOut()}
-            >
-              <LogOut className="mr-2 h-4 w-4" />
-
-              <SignOutButton />
-              {/* <span>Log out</span> */}
+        <SignedIn>
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <Link className="flex" href="/profile">
+                <LucideUser className="mr-2 h-4 w-4" />
+                <span>Profile</span>
+              </Link>
             </DropdownMenuItem>
-          </>
-        )}
+            <div className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+              <Applications />
+            </div>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <LogOut className="mr-2 h-4 w-4" />
+              <SignOutButton />
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        </SignedIn>
+        <SignedOut>
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <div className="flex">
+                <LucideUser className="mr-2 h-4 w-4" />
+                <SignInButton
+                  mode="modal"
+                  afterSignInUrl={window.location.pathname}
+                  redirectUrl={window.location.pathname}
+                />
+              </div>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link className="flex" href="/">
+                <UserPlus className="mr-2 h-4 w-4" />
+                <span>Join us</span>
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        </SignedOut>
       </DropdownMenuContent>
     </DropdownMenu>
   );
