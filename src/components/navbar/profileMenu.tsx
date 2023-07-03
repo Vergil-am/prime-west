@@ -54,8 +54,6 @@ export default function ProfileMenu() {
                 <LucideUser className="mr-2 h-4 w-4" />
                 <SignInButton
                   mode="modal"
-                  // afterSignInUrl={window.location.pathname}
-                  // redirectUrl={window.location.pathname}
                 />
               </div>
             </DropdownMenuItem>

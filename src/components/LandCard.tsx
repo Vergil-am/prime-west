@@ -7,7 +7,7 @@ export default async function LandCard({ land }: any) {
     throw new Error("cannot find lands");
   }
   return (
-    <Card className="w-72 h-96 m-2.5 relative max-sm:w-screen max-sm:ml-0 max-sm:mt-2 max-sm:h-[450px]">
+    <Card className="w-72 h-96 m-2.5 relative max-sm:w-screen max-sm:ml-0 max-sm:mt-2 max-sm:h-auto">
       <Link href={`/land/${land.sys.id}`}>
         <img
           className="object-cover rounded-lg"
@@ -16,12 +16,10 @@ export default async function LandCard({ land }: any) {
         />
         <CardHeader>
           <CardTitle>{land.fields.title}</CardTitle>
-          <CardDescription className="h-6">
-            {land.fields.address}
-          </CardDescription>
+          <CardDescription className="h-6">{land.fields.address}</CardDescription>
         </CardHeader>
         <Separator orientation="horizontal" className="mb-1" />
-        <CardFooter className="flex justify-between pt-3">
+        <CardFooter className="flex justify-end items-end pt-3">
           <p className="flex mt-2">{land.fields.price} $</p>
         </CardFooter>
       </Link>

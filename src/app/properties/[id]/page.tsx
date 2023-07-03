@@ -4,15 +4,39 @@ import PropertyForm from "@/components/propertyPage/form";
 import MapsView from "@/components/propertyPage/mapsView";
 import { Card, CardHeader, CardFooter, CardTitle, CardContent } from "@/components/ui/Card";
 import { BedSingle, Bath, Warehouse, Home } from "lucide-react";
+import { Metadata, ResolvingMetadata } from "next";
+
 const contentful = require("contentful");
 const client = contentful.createClient({
   space: "izmdfhi52bl5",
   accessToken: "nfCtAYqyYRABC5oWQmwI-luORkf1oePPL2l5ZcCdOqA",
 });
 
+async function GetProperties(id: string) {
+  const res = await client.getEntry(id);
+
+  return res.fields;
+}
+
+export async function generateMetadata(
+  { params }: any,
+  parent?: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = params.id;
+
+  // fetch data
+  const Property = await GetProperties(id);
+  // optionally access and extend (rather than replace) parent metadata
+
+  return {
+    title: Property.title,
+  };
+}
+
 export default async function Property({ params }: any) {
-  const res = await client.getEntry(params.id);
-  const Property = res.fields;
+  const { id } = params;
+  const Property = await GetProperties(id);
   if (Property == undefined) {
     throw new Error("failed to retrieve Property");
   }

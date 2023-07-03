@@ -2,6 +2,15 @@ import Link from "next/link";
 import { PhoneMenu } from "./PhoneMenu";
 import ProfileMenu from "./profileMenu";
 
+const Links: { title: string; href: string }[] = [
+  { title: "PROPERTIES", href: "/properties" },
+  { title: "LAND", href: "/land" },
+  { title: "RENT", href: "/#rent" },
+  { title: "BUY", href: "/#buy" },
+  { title: "INVEST", href: "/#invest" },
+  { title: "CONTACT", href: "/#contact" },
+];
+
 export default function NavBar() {
   return (
     <header>
@@ -9,7 +18,7 @@ export default function NavBar() {
         <div className="flex justify-between">
           <nav className="flex items-center justify-between flex-wrap">
             <div className="block lg:hidden">
-              <PhoneMenu />
+              <PhoneMenu Links={Links} />
             </div>
             <Link
               href="/"
@@ -19,44 +28,16 @@ export default function NavBar() {
               <br />
               <small className="text-sm font-medium leading-none">Property group</small>
             </Link>
-            <div className={`w-full flex-grow lg:flex items-center lg:w-auto hidden`}>
+            <div className="w-full flex-grow lg:flex items-center lg:w-auto hidden">
               <div className="text-sm lg:flex-grow mt-2 animated jackinthebox xl:mx-8">
-                <Link
-                  href="/properties"
-                  className="block lg:inline-block text-md font-bold  text-secondary sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
-                >
-                  PROPERTIES
-                </Link>
-                <Link
-                  href="/land"
-                  className="block lg:inline-block text-md font-bold  text-secondary sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
-                >
-                  LAND
-                </Link>
-                <Link
-                  href="/#rent"
-                  className="block lg:inline-block text-md font-bold  text-secondary  sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
-                >
-                  RENT
-                </Link>
-                <Link
-                  href="/#buy"
-                  className="block lg:inline-block text-md font-bold  text-secondary  sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
-                >
-                  BUY
-                </Link>
-                <Link
-                  href="/#invest"
-                  className="block lg:inline-block text-md font-bold  text-secondary  sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
-                >
-                  INVEST
-                </Link>
-                <Link
-                  href="/#contact"
-                  className="block lg:inline-block text-md font-bold  text-secondary  sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
-                >
-                  CONTACT US
-                </Link>
+                {Links.map((link) => (
+                  <Link
+                    href={link.href}
+                    className="block lg:inline-block text-md font-bold  text-secondary sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
+                  >
+                    {link.title}
+                  </Link>
+                ))}
               </div>
             </div>
           </nav>

@@ -2,7 +2,6 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer";
-// import NextAuthSessionProvider from "./providers/sessionProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] });

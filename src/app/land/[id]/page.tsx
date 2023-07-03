@@ -1,28 +1,45 @@
 import Carousel from "@/components/propertyPage/Carousel";
 import PropertyForm from "@/components/propertyPage/form";
-import {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/Card";
+import { Card, CardHeader, CardFooter, CardTitle, CardContent } from "@/components/ui/Card";
 import { Map } from "lucide-react";
 import MapsView from "@/components/propertyPage/mapsView";
 import Description from "@/components/propertyPage/description";
+import { Metadata, ResolvingMetadata } from "next";
+
 const contentful = require("contentful");
 const client = contentful.createClient({
   space: "izmdfhi52bl5",
   accessToken: "nfCtAYqyYRABC5oWQmwI-luORkf1oePPL2l5ZcCdOqA",
 });
+async function GetLand(id: string) {
+  const res = await client.getEntry(id);
+
+  return res.fields;
+}
+export async function generateMetadata(
+  { params }: any,
+  parent?: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = params.id;
+
+  // fetch data
+
+  const land = await GetLand(id);
+  // optionally access and extend (rather than replace) parent metadata
+
+  return {
+    title: land.title,
+  };
+}
 
 export default async function Land({ params }: any) {
-  if (params == undefined) {
-    throw new Error("failed to retieve land");
+  const { id } = params;
+  const land = await GetLand(id);
+  if (land == undefined) {
+    throw new Error("failed to retrieve Property");
   }
 
-  const res = await client.getEntry(params.id);
-  const land = res.fields;
   return (
     <main>
       <div className="w-screen flex flex-wrap">

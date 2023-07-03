@@ -27,7 +27,7 @@ import {
 import { useToast } from "@/components/ui/useToast";
 import axios from "axios";
 import { useAuth } from "@clerk/nextjs";
-
+import { useUser } from "@clerk/nextjs";
 const phoneRegex = new RegExp(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/);
 
 const formSchema = z.object({
@@ -42,6 +42,8 @@ interface params {
 }
 export default function PropertyForm({ PropertyTitle, PropertyId }: params) {
   const { isLoaded, userId } = useAuth();
+  const {user} = useUser()
+  console.log(user)
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,8 +55,6 @@ export default function PropertyForm({ PropertyTitle, PropertyId }: params) {
     },
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     if (isLoaded) {
       const res = axios.post("/api/applications/send", {
         UserId: userId,
@@ -79,7 +79,6 @@ export default function PropertyForm({ PropertyTitle, PropertyId }: params) {
           <DialogTrigger asChild>
             <Button variant="outline">Hold now</Button>
           </DialogTrigger>
-
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
               <DialogTitle>Hold form</DialogTitle>
@@ -111,7 +110,7 @@ export default function PropertyForm({ PropertyTitle, PropertyId }: params) {
                       <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <Input placeholder="shadcn@email.com" {...field} />
+                          <Input placeholder="shadcn@email.com" type="number" {...field} />
                         </FormControl>
                         <FormDescription>Enter your Email adress.</FormDescription>
                         <FormMessage />
