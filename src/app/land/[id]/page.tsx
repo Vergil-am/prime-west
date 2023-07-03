@@ -16,10 +16,7 @@ async function GetLand(id: string) {
 
   return res.fields;
 }
-export async function generateMetadata(
-  { params }: any,
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   // read route params
   const id = params.id;
 
