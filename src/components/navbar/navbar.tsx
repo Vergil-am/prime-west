@@ -32,6 +32,7 @@ export default function NavBar() {
               <div className="text-sm lg:flex-grow mt-2 animated jackinthebox xl:mx-8">
                 {Links.map((link) => (
                   <Link
+                    key={link.title}
                     href={link.href}
                     className="block lg:inline-block text-md font-bold  text-secondary sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
                   >

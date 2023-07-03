@@ -49,6 +49,7 @@ export function PhoneMenu({ Links }: params) {
             {Links.map((link) => (
               <SheetClose asChild>
                 <Link
+                  key={link.title}
                   href={link.href}
                   className="block lg:inline-block text-md font-bold  text-secondary sm:hover:border-indigo-400  hover:text-orange-500 mx-2 focus:text-blue-500  p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-lg"
                 >
